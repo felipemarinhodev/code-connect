@@ -28,7 +28,7 @@ export const CardPost = ({ post }: CardPostProps) => {
         <figure>
           <Image
             src={post.cover}
-            alt={post.title}
+            alt={`Capa do post de titulo: ${post.title}`}
             width={438}
             height={133}
           />

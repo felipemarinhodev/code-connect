@@ -11,7 +11,7 @@ export const Avatar = ({ name, imageSrc }: AvatarProps) => {
       <li>
         <Image
           src={imageSrc}
-          alt={name}
+          alt={`Avatar do(a) ${name}`}
           width={32}
           height={32}
         />
