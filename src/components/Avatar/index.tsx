@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import styles from "./avatar.module.css";
+
 export type AvatarProps = {
   name: string;
   imageSrc: string;
@@ -7,7 +9,7 @@ export type AvatarProps = {
 
 export const Avatar = ({ name, imageSrc }: AvatarProps) => {
   return (
-    <ul>
+    <ul className={styles.container}>
       <li>
         <Image
           src={imageSrc}
