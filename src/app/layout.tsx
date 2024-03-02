@@ -16,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
+        <div className="app-container">
         <Aside />
         {children}
+        </div>
       </body>
     </html>
   );
