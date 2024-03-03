@@ -9,7 +9,7 @@ type Author = {
   username: string;
   avatar: string;
 }
-type Post = {
+export type Post = {
   id: number,
   cover: string;
   title: string;
