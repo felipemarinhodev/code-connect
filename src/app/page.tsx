@@ -3,8 +3,8 @@ import logger from "@/logger";
 
 import styles from "./page.module.css";
 
-async function getAllPosts() {
-  const response = await fetch('http://localhost:3042/posts');
+async function getAllPosts(page: number) {
+  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`);
   if (!response.ok) {
     logger.error(`${Date()}: Ops, alguma coisa ocorreu mal`);
     return [];
@@ -13,7 +13,8 @@ async function getAllPosts() {
   return response.json();
 }
 export default async function Home() {
-  const posts: Array<Post> = await getAllPosts();
+  const response = await getAllPosts(1);
+  const posts: Array<Post> = response.data;
   return (
     <main className={styles.grid}>
       {posts.map(post => (
