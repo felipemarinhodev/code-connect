@@ -13,8 +13,13 @@ async function getAllPosts(page: number) {
   logger.info(`${Date()}: Posts obtidos com sucesso`);
   return response.json();
 }
-export default async function Home() {
-  const { data, prev, next } = await getAllPosts(1);
+export default async function Home({
+  searchParams
+}: {
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
+  const currentPage = searchParams?.page ? Number(searchParams?.page) : 1;
+  const { data, prev, next } = await getAllPosts(currentPage);
   const posts: Array<Post> = data;
   return (
     <main className={styles.grid}>
