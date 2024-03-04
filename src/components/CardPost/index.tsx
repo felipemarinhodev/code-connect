@@ -21,21 +21,21 @@ export type Post = {
 }
 
 type CardPostProps = {
-  post: Post
+  post: Post;
+  highlight?: boolean;
 }
 
-export const CardPost = ({ post }: CardPostProps) => {
+export const CardPost = ({ post, highlight = false }: CardPostProps) => {
   return (
     <Link href={`/posts/${post.slug}`} className={styles.link}>
-    <article className={styles.card}>
+      <article className={styles.card} style={{ width: highlight ? 993 : 486 }}>
       <header className={styles.header}>
-        <figure>
+          <figure style={{ height: highlight ? 300 : 133 }}>
           <Image
             className={styles.image}
             src={post.cover}
             alt={`Capa do post de titulo: ${post.title}`}
-            width={438}
-            height={133}
+              fill
           />
         </figure>
       </header>

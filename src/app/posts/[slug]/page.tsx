@@ -1,7 +1,9 @@
-import { Post } from "@/components/CardPost";
+import { CardPost, Post } from "@/components/CardPost";
 import logger from "@/logger";
 import { remark } from "remark";
 import html from "remark-html";
+
+import styles from "./page.module.css";
 
 async function getPostBySlug(slug: string): Promise<Post | {}> {
   const response = await fetch(`http://localhost:3042/posts?slug=${slug}`)
@@ -37,16 +39,15 @@ const Posts = async ({
 
 
   return (
-    <>
-      <h1 style={{ color: 'white' }}>
-        {post.title}
-      </h1>
-
-      <div
-        style={{ padding: 16, background: 'white' }}
-        dangerouslySetInnerHTML={{ __html: post.markdown }}
-      />
-    </>
+    <div className={styles.container}>
+      <CardPost post={post} highlight />
+      <h2>Código:</h2>
+      <div className={styles.code}>
+        <div
+          dangerouslySetInnerHTML={{ __html: post.markdown }}
+        />
+      </div>
+    </div>
   );
 }
 
