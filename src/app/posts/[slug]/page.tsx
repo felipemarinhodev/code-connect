@@ -1,5 +1,7 @@
 import { Post } from "@/components/CardPost";
 import logger from "@/logger";
+import { remark } from "remark";
+import html from "remark-html";
 
 async function getPostBySlug(slug: string): Promise<Post | {}> {
   const response = await fetch(`http://localhost:3042/posts?slug=${slug}`)
@@ -15,7 +17,14 @@ async function getPostBySlug(slug: string): Promise<Post | {}> {
     return {};
   }
   logger.info(`${Date()}: Post: '${slug}' obtido com sucesso`);
-  return data[0];
+  const post = data[0];
+
+  const processedContent = await remark().use(html).process(post.markdown);
+  const contentHtml = processedContent.toString();
+
+  post.markdown = contentHtml;
+
+  return post
 }
 
 const Posts = async ({
@@ -24,10 +33,20 @@ const Posts = async ({
   params: { slug: string }
 }) => {
   const post = await getPostBySlug(params.slug) as Post;
+
+
+
   return (
-    <h1>
-      {post.title}
-    </h1>
+    <>
+      <h1 style={{ color: 'white' }}>
+        {post.title}
+      </h1>
+
+      <div
+        style={{ padding: 16, background: 'white' }}
+        dangerouslySetInnerHTML={{ __html: post.markdown }}
+      />
+    </>
   );
 }
 
