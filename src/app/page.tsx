@@ -2,10 +2,11 @@ import { CardPost, Post } from "@/components/CardPost";
 import logger from "@/logger";
 
 import styles from "./page.module.css";
-import Link from "next/link";
+import { LinkComponent } from "@/components/Link";
+
 
 async function getAllPosts(page: number) {
-  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`);
+  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=4`);
   if (!response.ok) {
     logger.error(`${Date()}: Ops, alguma coisa ocorreu mal`);
     return [];
@@ -30,8 +31,10 @@ export default async function Home({
         />
       )
       )}
-      {prev && <Link href={`/?page=${prev}`}>Página anterior</Link>}
-      {next && <Link href={`/?page=${next}`}>Proxima página</Link>}
+      <div className={styles.footer}>
+        {prev && <LinkComponent href={`/?page=${prev}`}>Página anterior</LinkComponent>}
+        {next && <LinkComponent href={`/?page=${next}`}>Proxima página</LinkComponent>}
+      </div>
     </main>
   );
 }
