@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Avatar } from "../Avatar"
 
 import styles from "./cardpost.module.css";
+import Link from "next/link";
 
 type Author = {
   id: number,
@@ -25,6 +26,7 @@ type CardPostProps = {
 
 export const CardPost = ({ post }: CardPostProps) => {
   return (
+    <Link href={`/posts/${post.slug}`} className={styles.link}>
     <article className={styles.card}>
       <header className={styles.header}>
         <figure>
@@ -48,5 +50,6 @@ export const CardPost = ({ post }: CardPostProps) => {
         />
       </footer>
     </article>
+    </Link>
   )
 }
