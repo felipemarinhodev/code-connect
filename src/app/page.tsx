@@ -6,7 +6,7 @@ import { LinkComponent } from "@/components/Link";
 
 
 async function getAllPosts(page: number) {
-  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=4`);
+  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`);
   if (!response.ok) {
     logger.error(`${Date()}: Ops, alguma coisa ocorreu mal`);
     return [];
