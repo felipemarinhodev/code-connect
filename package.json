@@ -2,6 +2,7 @@
   "name": "code-connect",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "dev:backend": "npx json-server@1.0.0-alpha.22 posts.json -p 3042",
@@ -23,6 +24,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "prisma": "^5.11.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
