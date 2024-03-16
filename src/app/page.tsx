@@ -22,7 +22,7 @@ export default async function Home({
 }) {
   const currentPage = searchParams?.page ? Number(searchParams?.page) : 1;
   const { data, prev, next } = await getAllPosts(currentPage);
-  const posts: Array<Post> = data;
+  const posts = data;
   return (
     <main className={styles.grid}>
       {posts.map(post => (
