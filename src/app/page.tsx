@@ -56,9 +56,24 @@ export default async function Home({
       )
       )}
       <div className={styles.footer}>
-        {prev && <LinkComponent href={`/?page=${prev}`}>Página anterior</LinkComponent>}
-        {next && <LinkComponent href={`/?page=${next}`}>Proxima página</LinkComponent>}
+        {prev && (
+          <LinkComponent
+            href={
+              { pathname: '/', query: { page: prev, q: searchTerm } }
+            }>
+            Página anterior
+          </LinkComponent>
+        )}
+        {next && (
+          <LinkComponent
+            href={
+              { pathname: '/', query: { page: next, q: searchTerm } }
+            }>
+            Proxima página
+          </LinkComponent>
+        )}
       </div>
     </main>
   );
 }
+``

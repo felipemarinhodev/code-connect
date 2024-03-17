@@ -1,14 +1,13 @@
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
 import styles from './link.module.css';
 
-export type LinkProps = {
-  href: string;
+export type LinkComponentProps = {
   children: string;
-}
+} & LinkProps
 
-export const LinkComponent = ({ href, children }: LinkProps) => {
+export const LinkComponent = ({ children, ...props }: LinkComponentProps) => {
   return (
-    <Link href={href} className={styles.link}>{children}</Link>
+    <Link className={styles.link} {...props}>{children}</Link>
   );
 }
