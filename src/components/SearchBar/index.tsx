@@ -5,11 +5,16 @@ import styles from './searchbar.module.css';
 
 export function SearchBar() {
   return (
-    <section className={styles.wrapper}>
+    <form
+      className={styles.wrapper}
+      action='/'
+    >
       <TextField
+        name="q"
+        placeholder='Digite o que você procura'
         icon={<SearchIcon />}
       />
       <Button>Buscar</Button>
-    </section>
+    </form>
   );
 }

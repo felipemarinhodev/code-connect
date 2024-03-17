@@ -3,13 +3,13 @@ import styles from './textfield.module.css';
 
 export type TextFieldProps = {
   icon?: React.ReactNode
-}
+} & React.ComponentProps<'input'>
 
-export function TextField({ icon }: TextFieldProps) {
+export function TextField({ icon, type = 'text', ...props }: TextFieldProps) {
   return (
     <div className={styles.wrapper}>
       {icon && icon}
-      <input placeholder='Digite o que você procura' />
+      <input type={type} {...props} />
     </div>
   );
 }
