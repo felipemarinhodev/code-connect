@@ -9,9 +9,9 @@ import db from "../../prisma/db";
 async function getAllPosts(page: number) {
   try {
     const posts = await db.post.findMany({
-      include: {
-        author: true
-      }
+      // include: {
+      //   author: true
+      // }
     });
     return { data: posts, prev: null, next: null }
   } catch (error) {
