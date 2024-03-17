@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #171D1F;
+  gap: 8px;
+  height: 51px;
+
+  margin-bottom: 56px;
+  border-radius: 4px;
+}
+
+.wrapper input {
+  flex: 1;
+}

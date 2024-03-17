@@ -110,3 +110,9 @@
 {"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"webpack-um-guia-para-iniciantess"}
 {"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"explorando-flexbox-no-s"}
 {"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reacts"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reacts"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-react"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter posts"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter posts"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter posts"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter posts"}

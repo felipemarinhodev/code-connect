@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  gap: 16px;
+  flex: 1;
+
+  padding: 8px 16px;
+}
+
+.wrapper:focus-within {
+  border: 1px solid #81FE88;
+  border-radius: 4px;
+}
+
+.wrapper input {
+  background: none;
+  border: none;
+
+  font-size: 22px;
+  line-height: 33px;
+  letter-spacing: 0px;
+  height: 32px;
+
+  color: #BCBCBC;
+  outline: none;
+}
