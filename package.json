@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:backend": "npx json-server@1.0.0-alpha.22 posts.json -p 3042",
-    "build": "prisma migrate dev && prisma generate && prisma db seed && next build",
+    "build": "prisma generate && prisma migrate dev && prisma db seed && next build",
     "start": "next start",
     "lint": "next lint"
   },

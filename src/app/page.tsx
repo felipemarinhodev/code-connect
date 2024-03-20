@@ -31,6 +31,8 @@ async function getAllPosts(page: number, searchTerm: string) {
         author: true
       }
     });
+    console.log('data', posts);
+
     return { data: posts, prev, next }
   } catch (error) {
     logger.error('Falha ao obter posts', { error });
