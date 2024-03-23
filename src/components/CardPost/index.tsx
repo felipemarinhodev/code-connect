@@ -3,6 +3,8 @@ import { Avatar } from "../Avatar"
 
 import styles from "./cardpost.module.css";
 import Link from "next/link";
+import { IconButton } from "../IconButton";
+import { ThumbsUp } from "../icons/ThumbsUp";
 
 type Author = {
   id: number,
@@ -17,7 +19,8 @@ export type Post = {
   slug: string;
   body: string;
   markdown: string;
-  author: Author
+  author: Author;
+  likes: number;
 }
 
 type CardPostProps = {
@@ -44,6 +47,14 @@ export const CardPost = ({ post, highlight = false }: CardPostProps) => {
         <Link href={`/posts/${post.slug}`} className={styles.link}>Ver detalhes</Link>
       </section>
       <footer className={styles.footer}>
+        <div>
+          <form>
+            <IconButton>
+              <ThumbsUp />
+            </IconButton>
+          </form>
+          <p>{post.likes}</p>
+        </div>
         <Avatar
           imageSrc={post.author.avatar}
           name={post.author.username}
