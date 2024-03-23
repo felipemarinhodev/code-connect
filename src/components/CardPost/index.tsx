@@ -5,6 +5,7 @@ import styles from "./cardpost.module.css";
 import Link from "next/link";
 import { IconButton } from "../IconButton";
 import { ThumbsUp } from "../icons/ThumbsUp";
+import { incrementThumbsUp } from "@/actions";
 
 type Author = {
   id: number,
@@ -29,6 +30,9 @@ type CardPostProps = {
 }
 
 export const CardPost = ({ post, highlight = false }: CardPostProps) => {
+
+  const submitThumbsUp = incrementThumbsUp.bind(null, { id: post.id });
+
   return (
     <article className={styles.card} style={{ width: highlight ? 993 : 486 }}>
       <header className={styles.header}>
@@ -48,7 +52,7 @@ export const CardPost = ({ post, highlight = false }: CardPostProps) => {
       </section>
       <footer className={styles.footer}>
         <div>
-          <form>
+          <form action={submitThumbsUp}>
             <IconButton>
               <ThumbsUp />
             </IconButton>

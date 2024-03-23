@@ -3,7 +3,11 @@
 import { Post } from "@prisma/client";
 import db from "../../prisma/db";
 
-export async function incrementThumbsUp(post: Post) {
+type incrementThumbsUpParams = {
+  id: number;
+};
+
+export async function incrementThumbsUp(post: incrementThumbsUpParams) {
   await db.post.update({
     where: {
       id: post.id,

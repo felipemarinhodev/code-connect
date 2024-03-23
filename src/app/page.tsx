@@ -47,6 +47,8 @@ export default async function Home({
   const searchTerm = searchParams?.q;
   const { data, prev, next } = await getAllPosts(currentPage, searchTerm);
   const posts = data;
+  console.log("post", JSON.stringify(posts, null, 2));
+
   return (
     <main className={styles.grid}>
       {posts.map(post => (
