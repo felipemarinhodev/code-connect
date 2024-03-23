@@ -27,21 +27,21 @@ type CardPostProps = {
 
 export const CardPost = ({ post, highlight = false }: CardPostProps) => {
   return (
-    <Link href={`/posts/${post.slug}`} className={styles.link}>
-      <article className={styles.card} style={{ width: highlight ? 993 : 486 }}>
+    <article className={styles.card} style={{ width: highlight ? 993 : 486 }}>
       <header className={styles.header}>
-          <figure style={{ height: highlight ? 300 : 133 }}>
+        <figure style={{ height: highlight ? 300 : 133 }}>
           <Image
             className={styles.image}
             src={post.cover}
             alt={`Capa do post de titulo: ${post.title}`}
-              fill
+            fill
           />
         </figure>
       </header>
       <section className={styles.body}>
         <h2>{post.title}</h2>
         <p>{post.body}</p>
+        <Link href={`/posts/${post.slug}`} className={styles.link}>Ver detalhes</Link>
       </section>
       <footer className={styles.footer}>
         <Avatar
@@ -50,6 +50,5 @@ export const CardPost = ({ post, highlight = false }: CardPostProps) => {
         />
       </footer>
     </article>
-    </Link>
   )
 }
