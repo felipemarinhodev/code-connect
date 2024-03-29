@@ -1,13 +1,10 @@
 "use server";
 
 import { Post } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import db from "../../prisma/db";
 
-type incrementThumbsUpParams = {
-  id: number;
-};
-
-export async function incrementThumbsUp(post: incrementThumbsUpParams) {
+export async function incrementThumbsUp(post: Post) {
   await db.post.update({
     where: {
       id: post.id,
@@ -18,4 +15,9 @@ export async function incrementThumbsUp(post: incrementThumbsUpParams) {
       },
     },
   });
+
+  await new Promise((resolve) => setTimeout(resolve, 3500));
+
+  revalidatePath("/");
+  revalidatePath(`/${post.slug}`);
 }
