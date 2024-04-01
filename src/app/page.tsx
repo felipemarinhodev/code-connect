@@ -29,7 +29,8 @@ async function getAllPosts(page: number, searchTerm: string) {
             id: 'desc'
           }],
         include: {
-          author: true
+          author: true,
+          comments: true
         }
       })
     )

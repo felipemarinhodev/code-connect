@@ -14,7 +14,8 @@ async function getPostBySlug(slug: string): Promise<Post | {}> {
         slug
       },
       include: {
-        author: true
+        author: true,
+        comments: true
       }
     })
 

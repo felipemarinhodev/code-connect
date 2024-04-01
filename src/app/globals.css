@@ -1,6 +1,4 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 body {
@@ -15,12 +13,25 @@ body {
   display: flex;
   gap: 28px;
   min-height: 100vh;
-  }
-
-  .main-content {
-    flex-grow: 1;
 }
 
+.main-content {
+  flex-grow: 1;
+}
+
+a {
+  color: #81FE88;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 27px */
+  text-decoration-line: underline;
+}
+
+a:visited {
+  color: #81FE88;
+}
 ::backdrop {
   background-color: #171D1F;
   opacity: 0.8;

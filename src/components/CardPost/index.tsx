@@ -6,6 +6,7 @@ import Link from "next/link";
 import styles from "./cardpost.module.css";
 import { ThumbsUpButton } from "./ThumbsUpButton";
 import { Post } from "@prisma/client";
+import { ModalComment } from "../ModalComment";
 
 type CardPostProps = {
   post: Post;
@@ -39,12 +40,18 @@ export const CardPost = ({ post, highlight = false }: CardPostProps) => {
         <div>
           <form action={submitThumbsUp}>
             <ThumbsUpButton />
+            <p>{post.likes}</p>
           </form>
-          <p>{post.likes}</p>
+          <div>
+            <ModalComment />
+            <p>
+              {post.comments?.length}
+            </p>
+          </div>
         </div>
         <Avatar
-          imageSrc={post.author.avatar}
-          name={post.author.username}
+          imageSrc={post.author?.avatar}
+          name={post.author?.username}
         />
       </footer>
     </article>
