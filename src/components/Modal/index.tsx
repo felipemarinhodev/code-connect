@@ -1,13 +1,11 @@
 'use client'
 
 import { forwardRef, ReactNode, useImperativeHandle, useRef } from "react";
-import { Button } from "../Button";
-import { ArrowForward } from "../icons/ArrowForward";
-import { TextField } from "../TextField";
 import styles from "./modal.module.css";
 
 export type ModalProps = {
   children: ReactNode;
+  header: string;
 }
 
 export type ModalHandle = {
@@ -16,7 +14,7 @@ export type ModalHandle = {
 }
 export type Ref = HTMLDialogElement;
 
-export const Modal = forwardRef<ModalHandle, ModalProps>(({ children }, ref) => {
+export const Modal = forwardRef<ModalHandle, ModalProps>(({ children, header }, ref) => {
   // const dialogRef = useRef<ModalHandler>(ref);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const close = () => {
@@ -34,15 +32,8 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(({ children }, ref) => 
     <dialog
       ref={dialogRef}
       className={styles.dialog}>
-      <header className={styles.header}>
-        <button onClick={close}>X</button>
-        <h3>Deixe seu comentário sobre o post:</h3>
-        <TextField placeholder="Digite seu comentário" />
-        <Button
-          icon={<ArrowForward />}
-        >
-          Comentar</Button>
-      </header>
+      <button onClick={close}>X</button>
+      <header className={styles.header}>{header}</header>
       {children}
     </dialog>
   );
