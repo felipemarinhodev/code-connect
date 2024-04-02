@@ -1,4 +1,4 @@
-import { CardPost, Post } from "@/components/CardPost";
+import { CardPost } from "@/components/CardPost";
 import { remark } from "remark";
 import html from "remark-html";
 
@@ -6,6 +6,8 @@ import db from "../../../../prisma/db";
 import styles from "./page.module.css";
 import logger from "@/logger";
 import { redirect } from "next/navigation";
+import { Post } from "@prisma/client";
+import { CommentList } from "@/components/CommentList";
 
 async function getPostBySlug(slug: string): Promise<Post | {}> {
   try {
@@ -15,7 +17,7 @@ async function getPostBySlug(slug: string): Promise<Post | {}> {
       },
       include: {
         author: true,
-        comments: true
+        comments: { include: { author: true } }
       }
     })
 
@@ -54,6 +56,10 @@ const Posts = async ({
         <div
           dangerouslySetInnerHTML={{ __html: post.markdown }}
         />
+      </div>
+      <div>
+        <h2>Comentários</h2>
+        <CommentList comments={post.comments} />
       </div>
     </div>
   );
