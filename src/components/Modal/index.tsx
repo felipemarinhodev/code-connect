@@ -5,7 +5,6 @@ import styles from "./modal.module.css";
 
 export type ModalProps = {
   children: ReactNode;
-  header: string;
 }
 
 export type ModalHandle = {
@@ -14,7 +13,7 @@ export type ModalHandle = {
 }
 export type Ref = HTMLDialogElement;
 
-export const Modal = forwardRef<ModalHandle, ModalProps>(({ children, header }, ref) => {
+export const Modal = forwardRef<ModalHandle, ModalProps>(({ children }, ref) => {
   // const dialogRef = useRef<ModalHandler>(ref);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const close = () => {
@@ -33,7 +32,6 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(({ children, header }, 
       ref={dialogRef}
       className={styles.dialog}>
       <button onClick={close}>X</button>
-      <header className={styles.header}>{header}</header>
       {children}
     </dialog>
   );

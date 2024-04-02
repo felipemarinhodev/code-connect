@@ -8,7 +8,11 @@ export type CommentListProps = {
 export const CommentList = ({ comments }: CommentListProps) => {
   return (
     <ul>
-      {comments.map(comment => <li><Comment key={comment.id} comment={comment} /></li>)}
+      {comments.map(comment => (
+        <li key={comment.id}>
+          <Comment key={comment.id} comment={comment} />
+        </li>
+      ))}
     </ul>
   );
 }

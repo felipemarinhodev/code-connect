@@ -22,14 +22,16 @@ export async function incrementThumbsUp(post: Post) {
   revalidatePath(`/${post.slug}`);
 }
 
-export async function postComment(post: Post, formData: any) {
+export async function postComment(post: Post, formData: FormData) {
   const author = await db.user.findFirst({
     where: {
       username: "anabeatriz_dev",
     },
   });
 
-  if (author?.id === undefined) {
+  const text = formData.get("text");
+
+  if (author?.id === undefined && !text) {
     throw new Error(
       "A problem happened when trying to recover user information."
     );
@@ -37,11 +39,12 @@ export async function postComment(post: Post, formData: any) {
 
   await db.comment.create({
     data: {
-      text: formData.get("text"),
+      text,
       authorId: author?.id,
       postId: post.id,
     },
   });
+  formData.delete("text");
   revalidatePath("/");
   revalidatePath(`/${post.slug}`);
 }

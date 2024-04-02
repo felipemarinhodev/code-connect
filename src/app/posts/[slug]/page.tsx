@@ -46,8 +46,6 @@ const Posts = async ({
 }) => {
   const post = await getPostBySlug(params.slug) as Post;
 
-
-
   return (
     <div className={styles.container}>
       <CardPost post={post} highlight />
