@@ -1,13 +1,15 @@
 import { Comment as CommentPrisma } from "@prisma/client";
 import Image from "next/image";
 
+import styles from "./comment.module.css";
+
 export type CommentProps = {
   comment: CommentPrisma;
 }
 
 export const Comment = ({ comment }: CommentProps) => {
   return (
-    <div>
+    <div className={styles.item}>
       <Image
         width={32}
         height={32}
@@ -17,7 +19,6 @@ export const Comment = ({ comment }: CommentProps) => {
       <strong>
         @{comment.author.name}
       </strong>
-
       <p>{comment.text}</p>
     </div>
   );
