@@ -1,8 +1,8 @@
 import { Comment as CommentPrisma } from "@prisma/client";
 import { Comment } from "../Comment";
+import { Replies } from "../Replies";
 
 import styles from "./commentlist.module.css";
-import { Replies } from "../Replies";
 
 export type CommentListProps = {
   comments: CommentPrisma[];
@@ -10,13 +10,16 @@ export type CommentListProps = {
 
 export const CommentList = ({ comments }: CommentListProps) => {
   return (
-    <ul className={styles.list}>
+    <section className={styles.comments}>
+      <h2>Comentários</h2>
+      <ul>
       {comments.map(comment => (
-        <li key={comment.id} className={styles.item}>
+        <li key={comment.id}>
           <Comment key={comment.id} comment={comment} />
           <Replies />
         </li>
       ))}
     </ul>
+    </section>
   );
 }

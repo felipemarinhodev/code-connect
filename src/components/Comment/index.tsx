@@ -9,7 +9,7 @@ export type CommentProps = {
 
 export const Comment = ({ comment }: CommentProps) => {
   return (
-    <div className={styles.item}>
+    <div className={styles.comment}>
       <Image
         width={32}
         height={32}

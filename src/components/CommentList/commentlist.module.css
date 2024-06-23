@@ -1,14 +1,28 @@
-.list {
-  list-style: none;
+.comments {
+  background-color: #888;
+  padding: 32px 16px;
+  margin-top: 40px;
+  border-radius: 8px;
+}
+
+.comments ul {
   padding: 0;
+  list-style: none;
+  margin: 0;
 }
 
-.list li {
-  padding-block: 16px;
-  border-bottom: 1px solid #3E3E3F;
-
+.comments ul li {
+  padding: 16px 0;
 }
 
-.list li:last-child {
-  border-bottom: none;
+.comments .comment {
+  border-bottom: 1px solid black;
+}
+
+.comments h2 {
+  color: #171D1F;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0;
 }
