@@ -5,9 +5,12 @@ import styles from './replies.module.css'
 
 export const Replies = () => {
 
-  const [showReplies, setShowReplies] = useState(false)
+  const [showReplies, setShowReplies] = useState(false);
 
   return (<div className={styles.container}>
+
+
+
 
     <div className={styles.replies}>
       <button
