@@ -17,7 +17,19 @@ async function getPostBySlug(slug: string): Promise<Post | {}> {
       },
       include: {
         author: true,
-        comments: { include: { author: true } }
+        comments: {
+          include: {
+            author: true,
+            children: {
+              include: {
+                author: true
+              }
+            }
+          },
+          where: {
+            parentId: null
+          }
+        }
       }
     })
 

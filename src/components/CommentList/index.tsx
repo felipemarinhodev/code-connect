@@ -18,7 +18,7 @@ export const CommentList = ({ comments }: CommentListProps) => {
         <li key={comment.id}>
           <Comment key={comment.id} comment={comment} />
           <ModalReply comment={comment} />
-          <Replies />
+          <Replies comment={comment} />
         </li>
       ))}
     </ul>
