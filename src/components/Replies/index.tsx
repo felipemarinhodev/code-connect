@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './replies.module.css'
 import { Comment as CommentPrisma } from '@prisma/client'
 import { Comment } from '../Comment'
@@ -14,6 +14,23 @@ export const Replies = ({ comment }: RepliesProps) => {
 
   const [showReplies, setShowReplies] = useState(false);
 
+  const [replies, setReplies] = useState<CommentPrisma[]>([]);
+
+  console.log(JSON.stringify(comment, null, 2));
+
+
+  async function fetchData() {
+    const response = await fetch(`/api/comment/${comment.id}/replies`);
+    const data = await response.json();
+    setReplies(data);
+  }
+
+  useEffect(() => {
+    if (showReplies) {
+      fetchData();
+    }
+  }, [showReplies]);
+
   return (
     <div className={styles.container}>
       <div className={styles.replies}>
@@ -25,7 +42,7 @@ export const Replies = ({ comment }: RepliesProps) => {
         </button>
         {showReplies && (
           <ul>
-            {comment.children.map(reply => (
+            {replies.map(reply => (
               <li key={reply.id}>
                 <Comment comment={reply} />
                 <ModalReply comment={reply} />
